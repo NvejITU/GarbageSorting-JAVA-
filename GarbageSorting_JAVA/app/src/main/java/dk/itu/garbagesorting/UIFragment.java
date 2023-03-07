@@ -31,25 +31,28 @@ public class UIFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_ui, container, false);
 
         //Text Fields
-        TextView itemWhat = v.findViewById(R.id.what_text);
+        TextView input = v.findViewById(R.id.what_text);
 
-       /* Button addItem = v.findViewById(R.id.add_item_button);
+        Button addItem = v.findViewById(R.id.add_item_button);
         // adding a new thing
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UIFragment.this, AddItem.class)
+                Intent intent = new Intent(getContext(), AddItem.class);
                 startActivity(intent);
             }
-        }); */
+        });
 
-        Button findItems = v.findViewById(R.id.where_button);
-        findItems.setOnClickListener(new View.OnClickListener() {
+        Button findPlace = v.findViewById(R.id.where_button);
+        findPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String what= itemWhat.getText().toString().trim();
-                itemWhat.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                itemWhat.onEditorAction(EditorInfo.IME_ACTION_DONE); //to close the keyboard when done with the text
+                String what = input.getText().toString().trim();
+                String place = itemsDB.searchForItem(what);
+                input.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                input.onEditorAction(EditorInfo.IME_ACTION_DONE); //to close the keyboard when done with the text
+
+                input.setText(what + " should be placed in: " + place);
             }
         });
 

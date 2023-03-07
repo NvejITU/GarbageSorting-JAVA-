@@ -1,5 +1,6 @@
 package dk.itu.garbagesorting;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import dk.itu.garbagesorting.R;
 public class UIFragment extends Fragment {
     // Model: Database of items
     private static ItemsDB itemsDB;
-// hjk
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,27 +31,25 @@ public class UIFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_ui, container, false);
 
         //Text Fields
-        TextView input = v.findViewById(R.id.what_text);
+        TextView itemWhat = v.findViewById(R.id.what_text);
 
         Button addItem = v.findViewById(R.id.add_item_button);
-
-        Button findPlace = v.findViewById(R.id.where_button);
-        findPlace.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String whatS = input.getText().toString().trim();
-                String place = itemsDB.searchForItem(whatS);
-
-                input.setText(whatS + " should be placed in: " + place);
-            }
-        });
-
-        Button addItems = v.findViewById(R.id.add_item_button);
-        addItems.setOnClickListener(new View.OnClickListener() {
+        // adding a new thing
+        addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UIFragment.this, AddItem.class);
                 startActivity(intent);
+            }
+        });
+
+        Button findItems = v.findViewById(R.id.where_button);
+        findItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String what= itemWhat.getText().toString().trim();
+                itemWhat.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                itemWhat.onEditorAction(EditorInfo.IME_ACTION_DONE); //to close the keyboard when done with the text
             }
         });
 

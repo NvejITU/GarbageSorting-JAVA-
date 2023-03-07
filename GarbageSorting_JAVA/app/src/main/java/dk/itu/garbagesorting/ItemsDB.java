@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ItemsDB {
@@ -15,7 +14,14 @@ public class ItemsDB {
 
     private ItemsDB(Context context) { fillItemsDB(context); }
 
-    public static void initialize(Context context) {
+    public ItemsDB(UIFragment context) {
+
+    }
+
+    public ItemsDB(ListFragment context) {
+    }
+
+    public static void initialize(ListFragment context) {
         if (sItemsDB == null) sItemsDB= new ItemsDB(context);
     }
 

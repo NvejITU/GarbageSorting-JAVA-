@@ -18,8 +18,6 @@ public class AddItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
-
-        ItemsDB.initialize(AddItem.this);
         itemsDB = ItemsDB.get();
 
         //Text Fields

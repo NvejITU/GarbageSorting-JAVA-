@@ -1,6 +1,5 @@
 package dk.itu.garbagesorting;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,17 +15,15 @@ public class ListFragment extends Fragment {
     private static ItemsDB itemsDB;
     private TextView listThings;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+    @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         itemsDB= ItemsDB.get();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.fragment_list, container, false);
-        TextView listThings= v.findViewById(R.id.listItems);
-        listThings.setText("List:"+itemsDB.listItems());
+        listThings= v.findViewById(R.id.listItems);
+        listThings.setText("Shopping List"+itemsDB.listItems());
         return v;
     }
 }

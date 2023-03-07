@@ -33,15 +33,15 @@ public class UIFragment extends Fragment {
         //Text Fields
         TextView itemWhat = v.findViewById(R.id.what_text);
 
-        Button addItem = v.findViewById(R.id.add_item_button);
+       /* Button addItem = v.findViewById(R.id.add_item_button);
         // adding a new thing
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UIFragment.this, AddItem.class);
+                Intent intent = new Intent(UIFragment.this, AddItem.class)
                 startActivity(intent);
             }
-        });
+        }); */
 
         Button findItems = v.findViewById(R.id.where_button);
         findItems.setOnClickListener(new View.OnClickListener() {

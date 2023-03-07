@@ -14,14 +14,7 @@ public class ItemsDB {
 
     private ItemsDB(Context context) { fillItemsDB(context); }
 
-    public ItemsDB(UIFragment context) {
-
-    }
-
-    public ItemsDB(ListFragment context) {
-    }
-
-    public static void initialize(ListFragment context) {
+    public static void initialize(Context context) {
         if (sItemsDB == null) sItemsDB= new ItemsDB(context);
     }
 

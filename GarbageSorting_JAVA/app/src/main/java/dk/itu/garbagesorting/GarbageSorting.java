@@ -16,6 +16,11 @@ public class GarbageSorting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garbage_sorting_portrait);
+        ItemsDB.initialize(GarbageSorting.this);
+        setUpFragments();
+    }
+
+    private void setUpFragments() {
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragmentUI = fm.findFragmentById(R.id.container_ui);

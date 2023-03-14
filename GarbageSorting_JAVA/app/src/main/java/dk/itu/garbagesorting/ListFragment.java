@@ -1,5 +1,6 @@
 package dk.itu.garbagesorting;
 
+import android.database.Observable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
+import java.util.Observer;
 
 import dk.itu.garbagesorting.ItemsDB;
 import dk.itu.garbagesorting.R;
@@ -23,7 +26,7 @@ public class ListFragment extends Fragment {
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.fragment_list, container, false);
         listThings= v.findViewById(R.id.listItems);
-        listThings.setText("Shopping List"+itemsDB.listItems());
+        listThings.setText("List: "+itemsDB.listItems());
         return v;
     }
 }

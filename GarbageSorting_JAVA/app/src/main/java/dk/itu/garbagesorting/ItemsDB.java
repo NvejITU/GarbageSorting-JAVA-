@@ -1,6 +1,9 @@
 package dk.itu.garbagesorting;
 
 import android.content.Context;
+import android.database.Observable;
+
+import androidx.lifecycle.Observer;
 
 import java.io.BufferedReader;
 import java.io.IOException;

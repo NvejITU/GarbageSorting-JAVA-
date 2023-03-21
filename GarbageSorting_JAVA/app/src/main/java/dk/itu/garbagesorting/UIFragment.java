@@ -56,6 +56,17 @@ public class UIFragment extends Fragment {
             }
         });
 
+        Button deleteItem = v.findViewById(R.id.delete_item_button);
+        deleteItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String what = input.getText().toString().trim();
+                input.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                input.onEditorAction(EditorInfo.IME_ACTION_DONE); //to close the keyboard when done with the text
+                itemsDB.removeItem(what);
+            }
+        });
+
         return v;
     }
 }

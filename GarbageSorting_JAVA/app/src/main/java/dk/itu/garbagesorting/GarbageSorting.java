@@ -3,20 +3,22 @@ package dk.itu.garbagesorting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import dk.itu.garbagesorting.ItemsDB;
 
 import android.os.Bundle;
 
 public class GarbageSorting extends AppCompatActivity {
-
-    private static ItemsDB itemsDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garbage_sorting);
         ItemsDB.initialize(GarbageSorting.this);
-        itemsDB = ItemsDB.get();
         setUpFragments();
+
+        ItemsDB itemsDB = new ViewModelProvider(this).get(ItemsDB.class);
     }
 
     private void setUpFragments() {

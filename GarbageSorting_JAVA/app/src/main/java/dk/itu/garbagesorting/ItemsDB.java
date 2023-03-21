@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Observable;
 
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,11 +12,11 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemsDB {
+public class ItemsDB extends ViewModel {
     private static ItemsDB sItemsDB;
     private Map<String, String> itemsDB= new HashMap<>();
 
-    private ItemsDB(Context context) { fillItemsDB(context); }
+    public ItemsDB(Context context) { fillItemsDB(context); }
 
     public static void initialize(Context context) {
         if (sItemsDB == null) sItemsDB= new ItemsDB(context);
@@ -28,6 +29,7 @@ public class ItemsDB {
 
     public void addItem(String what, String where){
         itemsDB.put(what, where);
+
     }
 
     public void fillItemsDB(Context context) {
@@ -65,5 +67,14 @@ public class ItemsDB {
         for (HashMap.Entry <String, String> item: itemsDB.entrySet())
             r= r+"\n Buy "+item.getKey() + " in: "  + item.getValue();
         return r;
+    }
+
+    public void removeItem(String what) {
+        for (Map.Entry<String, String> existingItem : itemsDB.entrySet()) {
+            if (existingItem.getKey().equals(what)) {
+                itemsDB.remove(existingItem);
+                break;
+            }
+        }
     }
 }

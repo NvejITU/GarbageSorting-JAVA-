@@ -28,14 +28,15 @@ public class ListFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         final View v= inflater.inflate(R.layout.fragment_list, container, false);
         itemsDB = new ViewModelProvider(requireActivity()).get(ItemsViewModel.class);
 
         RecyclerView itemList = v.findViewById(R.id.listItems);
         itemList.setLayoutManager(new LinearLayoutManager(getActivity()));
         ItemAdapter mAdapter = new ItemAdapter();
-        ItemList.setAdapter(mAdapter);
+        itemList.setAdapter(mAdapter);
         itemsDB.getValue().observe(getActivity(),itemsDB -> mAdapter.notifyDataSetChanged());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -44,20 +45,32 @@ public class ListFragment extends Fragment {
                     getActivity()
                             .getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(androidx.leanback.R.id.main_fragment ,new UIFragment()).commit());
+                            .replace(androidx.leanback.R.id.main ,new UIFragment()).commit());
         }
 
         return v;
     }
 
-    private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private final TextView mWhatTextView, mNoView;
+    private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private final TextView mWhatTextView, mNoView, mWhereTextView;
 
-        public ItemHolder(View ItemView) {
+        public ItemHolder(View itemView) {
             super(itemView);
             mNoView = itemView.findViewById(R.id.item_no);
             mWhatTextView = itemView.findViewById(R.id.what_text);
+            mWhereTextView= itemView.findViewById(R.id.where_text);
             itemView.setOnClickListener(this);
+        }
+
+        public void bind(Item item, int position) {
+            mNoView.setText(" " + position + " ");
+            mWhatTextView.setText(item.getWhat());
+            mWhereTextView.setText(item.getWhere());
+        }
+
+        @Override
+        public void onClick(View view) {
+
         }
     }
 
@@ -83,4 +96,3 @@ public class ListFragment extends Fragment {
             }
         }
     }
-}

@@ -8,9 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ItemsDB extends ViewModel {
     private static ItemsDB sItemsDB;
@@ -57,8 +55,12 @@ public class ItemsDB extends ViewModel {
         return itemPlace;
     }
 
-    public List<Item> getMap(){
+    public List<Item> getList(){
         return itemsDB;
+    }
+
+    public int size() {
+        return itemsDB.size();
     }
 
     public String listItems() {

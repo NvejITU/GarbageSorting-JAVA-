@@ -24,6 +24,7 @@ public class UIFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         itemsDB = ItemsDB.get();
+
     }
 
     @Override
@@ -32,16 +33,7 @@ public class UIFragment extends Fragment {
 
         //Text Fields
         TextView input = v.findViewById(R.id.what_text);
-
-        Button addItem = v.findViewById(R.id.add_item_button);
-        // adding a new thing
-        addItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), AddItem.class);
-                startActivity(intent);
-            }
-        });
+        TextView place = v.findViewById(R.id.where_text);
 
         Button findPlace = v.findViewById(R.id.where_button);
         findPlace.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +45,21 @@ public class UIFragment extends Fragment {
                 input.onEditorAction(EditorInfo.IME_ACTION_DONE); //to close the keyboard when done with the text
 
                 input.setText(what + " should be placed in: " + place);
+            }
+        });
+
+        Button addItem = v.findViewById(R.id.add_item_button);
+        // adding a new thing
+        addItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String whatS = input.getText().toString().trim();
+                String whereS = place.getText().toString().trim();
+                if ((whatS.length() > 0) && (whereS.length() > 0)) {
+                    itemsDB.addItem(whatS, whereS);
+                    input.setText("");
+                    place.setText("");
+                }
             }
         });
 

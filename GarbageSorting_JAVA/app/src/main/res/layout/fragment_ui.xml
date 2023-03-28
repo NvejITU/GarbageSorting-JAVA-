@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#eddbbe">
 
     <!--TextView for the heading -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#236948"
+        android:background="#235C41"
         android:text="Garbage Sorting"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -16,22 +17,51 @@
         android:textColor="@color/white"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:text="Where to place item:"
-            android:textSize="15sp"
-            />
+            android:layout_weight="2.7"
+            android:text="What item"
+            android:textSize="15dp"/>
 
-    <!-- Text field to enter item -->
         <EditText
             android:id="@+id/what_text"
+            android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:inputType="text"
-            android:layout_marginBottom="10dp"/>
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.7"
+            android:text="Where to place"
+            android:textSize="15dp"/>
+
+        <EditText
+            android:id="@+id/where_text"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="15dp"/>
+    </LinearLayout>
 
     <!-- Where button -->
     <Button
@@ -41,7 +71,7 @@
         android:layout_marginBottom="5sp"
         android:layout_marginLeft="10sp"
         android:layout_gravity="center"
-        android:background="#39f208"
+        android:background="#AD81E6F3"
         android:text="Where"/>
 
 
@@ -52,7 +82,7 @@
         android:layout_marginLeft="10sp"
         android:layout_marginBottom="5sp"
         android:layout_gravity="center"
-        android:background="#39f208"
+        android:background="#AD81E6F3"
         android:text=" Add a new item "/>
 
     <Button
@@ -61,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10sp"
         android:layout_gravity="center"
-        android:background="#39f208"
+        android:background="#AD81E6F3"
         android:text=" delete item "/>
 
 </LinearLayout>

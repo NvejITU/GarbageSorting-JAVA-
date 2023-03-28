@@ -17,8 +17,6 @@ public class GarbageSorting extends AppCompatActivity {
         setContentView(R.layout.garbage_sorting);
         ItemsDB.initialize(GarbageSorting.this);
         setUpFragments();
-
-        ItemsDB itemsDB = new ViewModelProvider(this).get(ItemsDB.class);
     }
 
     private void setUpFragments() {

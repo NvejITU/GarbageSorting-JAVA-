@@ -26,7 +26,7 @@ public class ItemsViewModel extends ViewModel {
             temp.removeItem(what);
             items.setValue(temp);
         }
-        public Map<String, String> getList() {
+        public List<Item> getList() {
             return items.getValue().getMap();
         }
 
